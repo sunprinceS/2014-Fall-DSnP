@@ -1,0 +1,5 @@
+*.o
+*.pdf
+*.doc
+*.txt
+tags

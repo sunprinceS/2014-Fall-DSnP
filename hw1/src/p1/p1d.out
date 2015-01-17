@@ -1,0 +1,17 @@
+run完收到的錯誤訊息：
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7b31655 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+
+下bt指令
+#0  0x00007ffff7b31655 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x00007ffff7b91699 in std::string::assign(std::string const&) ()
+   from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x0000000000400eb5 in P1a::assign(std::string const&) ()
+#3  0x0000000000400c66 in main ()
+
+發現是在assign這個P1a的member function出錯，
+assign是將參數賦值給object裡的_str，
+所以我想應該是這個object沒有被正確初始化（代表this這個pointer不存在，又或是其member _str不存在）
+google了一下發現，malloc（）僅僅是在heap中配置一塊記憶體給P1a* 的pointer，
+真正要讓這個物件實體化(其data member及this pointer均被正確初始化)，
+還是得靠constructor，否則對這個"物件"作一些操作時，就會crash！

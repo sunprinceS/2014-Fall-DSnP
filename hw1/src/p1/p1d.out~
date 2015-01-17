@@ -1,0 +1,9 @@
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7b31655 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+(gdb) bt
+#0  0x00007ffff7b31655 in ?? () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x00007ffff7b91699 in std::string::assign(std::string const&) ()
+   from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+#2  0x0000000000400eb5 in P1a::assign(std::string const&) ()
+#3  0x0000000000400c66 in main ()
+
